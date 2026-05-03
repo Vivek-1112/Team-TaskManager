@@ -2,7 +2,7 @@ const express = require('express');
 const { initDB } = require('./config/db');
 
 const app = express();
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 
 app.use(function(req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', '*');
