@@ -38,6 +38,6 @@ app.get('/api/dashboard', require('./middleware/auth'), require('./controllers/d
 
 initDB();
 
-app.listen(PORT, 'localhost', function() {
+app.listen(PORT, '0.0.0.0', function() {
   console.log('Server running on port ' + PORT);
 });
