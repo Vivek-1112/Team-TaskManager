@@ -24,7 +24,8 @@ const ProjectDetail = () => {
   const loadTasks = () => api.get(`/projects/${id}/tasks`).then(r => setTasks(r.data));
   const loadUsers = () => api.get('/auth/users').then(r => setAllUsers(r.data));
 
-  useEffect(() => { loadProject(); loadTasks(); loadUsers(); }, [id]);
+  useEffect(() => { loadProject(); loadTasks(); loadUsers(); // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id]);
 
   const isAdmin = user?.role === 'admin' || project?.owner_id === user?.id;
 
@@ -244,3 +245,5 @@ const ProjectDetail = () => {
   );
 };
 export default ProjectDetail;
+
+
