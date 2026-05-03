@@ -1,0 +1,11 @@
+const router = require('express').Router();
+const auth = require('../middleware/auth');
+const { isProjectAdmin } = require('../middleware/roleCheck');
+const { createProject, getProjects, getProject, addMember, removeMember, deleteProject } = require('../controllers/projectController');
+router.post('/', auth, createProject);
+router.get('/', auth, getProjects);
+router.get('/:projectId', auth, getProject);
+router.post('/:projectId/members', auth, isProjectAdmin, addMember);
+router.delete('/:projectId/members/:userId', auth, isProjectAdmin, removeMember);
+router.delete('/:projectId', auth, isProjectAdmin, deleteProject);
+module.exports = router;
